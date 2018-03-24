@@ -1,0 +1,34 @@
+@import "../../../../styles/variables";
+.task-item {
+    max-width: $screen-big;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 20px;
+    .title {
+        font-size: $text-size-hard;
+    }
+    .indi {
+        position: absolute;
+        left: 10px;
+        width: 2px;
+        height: 100%;
+        @include set-color-theme('background-color', clr-sub-primary);
+    }
+    .bottom {
+        text-align: right;
+        margin-right: 10px;
+    }
+    .left-btn {
+        float: left;
+    }
+
+    opacity: 0.4;
+
+    &:first-child {
+        opacity: 1;
+        .indi {
+            @include set-color-theme('background-color', clr-invert);
+        }
+    }
+}

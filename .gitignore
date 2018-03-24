@@ -1,0 +1,5 @@
+.cache/
+.hg/
+.idea/
+node_modules/
+dist/

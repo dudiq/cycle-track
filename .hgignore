@@ -1,0 +1,20 @@
+syntax: glob
+.cache
+.tmp/
+.sass-cache/
+.idea/
+.git/
+*.iml
+source/configs/config.js
+
+syntax: regexp
+
+^plugins/(?!(empty)/)[^/]+/
+^plugins/.*json
+^platforms/(?!(empty)/)[^/]+/
+^platforms/.*json
+^reports
+^report
+^www/
+^dist
+^node_modules

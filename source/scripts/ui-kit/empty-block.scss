@@ -1,0 +1,8 @@
+@import "../../styles/variables";
+
+.empty-block {
+    text-align: center;
+    width: 100%;
+    font-size: $text-size-small;
+    @include set-color-theme('color', clr-sub-primary);
+}

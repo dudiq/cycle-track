@@ -1,0 +1,31 @@
+@import "sizes";
+@import "../theme/mixin-theme";
+
+@mixin rotate( $degrees ) {
+    transform: rotate(#{$degrees}deg);
+
+    filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)});
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)})";
+    zoom: 1;
+}
+
+@mixin no-selection() {
+    user-select: none;
+}
+
+@mixin no-selection-children() {
+    @include no-selection();
+    & * {
+        @include no-selection();
+    }
+}
+
+@mixin drop-outline() {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    outline: none !important;
+}
+
+@mixin text-overflow() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

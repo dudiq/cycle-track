@@ -1,0 +1,44 @@
+@import "../../styles/variables";
+
+// .btn-shape_circle
+// .btn-[is-shape][_value] -> .btn-shape-circle, .btn-shape-square
+// .btn-[state] -> .btn-warn, .btn-active, .btn-info, .btn-disable, .btn-loading
+// .btn-[size] -> .btn-size-big, .btn-size-small (must be only 3 sizes!)
+// special state must be with .is-[value]-btn, .is-edge-btn, .is-bottom-btn
+
+$edge-value: 20px;
+
+.btn-shape-square {
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+    @include set-color-theme('background-color', clr-sub-primary);
+}
+
+.btn-shape-circle {
+    width: $btn-height-circle;
+    height: $btn-height-circle;
+    border-radius: $btn-height-circle;
+    line-height: $btn-height-circle;
+    text-align: center;
+    cursor: pointer;
+    display: table;
+    @include set-color-theme('background-color', clr-sub-primary);
+    @include set-color-theme('color', clr-sub-secondary);
+    @include set-color-theme-sub('box-shadow', clr-shadow, '2px 2px 5px 2px', '');
+    transition: all $defaultDelay ease;
+    z-index: 2;
+
+    .btn-icon {
+        font-size: $text-size-hard;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+}
+
+.is-edge-btn {
+    position: fixed;
+    right: $edge-value;
+    bottom: $edge-value;
+}

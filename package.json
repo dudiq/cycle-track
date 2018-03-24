@@ -1,0 +1,132 @@
+{
+    "name": "cycleTrack",
+    "version": "0.2.0",
+    "description": "cycle track",
+    "license": "MIT",
+    "author": {
+        "name": "idudiq"
+    },
+    "engines": {
+        "node": ">=8.0.0",
+        "npm": ">=5.0.0"
+    },
+    "main": "source/index.js",
+    "scripts": {
+        "start": "cross-env NODE_ENV=development parcel source/index.html -p 1337 --no-hmr",
+        "build": "cross-env NODE_ENV=production parcel build source/index.html --public-url /",
+        "test": "cross-env NODE_ENV=test NODE_ICU_DATA=node_modules/node-icu jest"
+    },
+    "dependencies": {
+        "autoprefixer": "^8.1.0",
+        "node-sass": "~4.7.2",
+        "parcel-bundler": "^1.6.2",
+        "preact": "^8.2.7",
+        "jr-browser-storage": "^1.0.0"
+    },
+    "devDependencies": {
+        "babel-eslint": "^6.1.2",
+        "babel-jest": "^22.4.3",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "cross-env": "^5.1.3",
+        "eslint": "^3.4.0",
+        "eslint-config-airbnb": "^11.0.0",
+        "eslint-loader": "^1.5.0",
+        "eslint-plugin-import": "^1.14.0",
+        "eslint-plugin-jsx-a11y": "^2.2.1",
+        "eslint-plugin-react": "^6.2.0",
+        "jest": "^22.4.3",
+        "stylelint": "^9.1.3",
+        "stylelint-config-standard": "^18.2.0",
+        "node-icu": "^1.1.0"
+    },
+    "eslintConfig": {
+        "parser": "babel-eslint",
+        "extends": "airbnb",
+        "env": {
+            "browser": true
+        },
+        "rules": {
+            "prefer-arrow-callback": "off",
+            "linebreak-style": [
+                "error",
+                "windows"
+            ],
+            "no-use-before-define": [
+                "error",
+                {
+                    "functions": false,
+                    "classes": true
+                }
+            ],
+            "space-before-blocks": "off",
+            "indent": [
+                "error",
+                4
+            ],
+            "class-methods-use-this": "off",
+            "no-trailing-spaces": "off",
+            "object-shorthand": "off",
+            "max-len": "off",
+            "padded-blocks": "off",
+            "object-curly-spacing": "off",
+            "no-param-reassign": "off",
+            "eqeqeq": "off",
+            "no-plusplus": "off",
+            "prefer-template": "off",
+            "arrow-body-style": "off",
+            "no-restricted-syntax": "off",
+            "no-unused-expressions": "warn",
+            "spaced-comment": "off",
+            "guard-for-in": "off",
+            "generator-star-spacing": "off",
+            "import/no-extraneous-dependencies": "off",
+            "jsx-a11y/no-static-element-interactions": "off",
+            "react/prop-types": "off",
+            "react/no-danger": "off",
+            "react/no-unused-prop-types": "off",
+            "react/require-extension": "off",
+            "react/forbid-prop-types": "off",
+            "react/react-in-jsx-scope": "off",
+            "react/jsx-space-before-closing": "off",
+            "react/jsx-indent-props": "off",
+            "react/jsx-first-prop-new-line": "off",
+            "react/jsx-closing-bracket-location": "off",
+            "react/jsx-filename-extension": "off",
+            "react/jsx-indent": [
+                "error",
+                4
+            ],
+            "jsx-a11y/img-has-alt": "off"
+        }
+    },
+    "stylelint": {
+        "extends": "stylelint-config-standard",
+        "rules": {
+            "rule-nested-empty-line-before": null,
+            "no-eol-whitespace": null,
+            "number-leading-zero": null,
+            "comment-whitespace-inside": null,
+            "max-empty-lines": null,
+            "color-hex-case": null,
+            "string-quotes": null,
+            "property-no-unknown": [
+                true,
+                {
+                    "ignoreProperties": [
+                        "composes"
+                    ]
+                }
+            ],
+            "selector-pseudo-class-no-unknown": [
+                true,
+                {
+                    "ignorePseudoClasses": [
+                        "global",
+                        "local"
+                    ]
+                }
+            ]
+        }
+    }
+}

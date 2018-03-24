@@ -1,0 +1,5 @@
+{
+  "name": "logger",
+  "private": true,
+  "main": "./logger.js"
+}
