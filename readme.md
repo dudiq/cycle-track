@@ -2,6 +2,8 @@
 
 Based on Preact and [Parcel Bundler].
 
+demo [cycle-track](https://dudiq.github.io/cycle-track/) 
+
 ## What's inside?
 
 * `preact`
