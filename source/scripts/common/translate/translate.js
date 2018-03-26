@@ -2,11 +2,12 @@ import log from '../logger';
 import plurals from './plurals';
 import numberFormat from './number-format';
 
-let currentLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
-
 const logger = log('translate.js');
 
+let currentLang = (navigator && (navigator.language || navigator.userLanguage) || '').substring(0, 2).toLowerCase() || 'en';
+
 const translateMap = {};
+const defSeparator = '.';
 
 function applyData(str, data) {
     let ret = str;
@@ -42,7 +43,7 @@ function processKeyTree(obj, langs, hash, separator, cb) {
 function treeObjectToList (obj, langs, separator, cb) {
     if (typeof separator == 'function') {
         cb = separator;
-        separator = '.'; // be default
+        separator = defSeparator; // be default
     }
     processKeyTree(obj, langs, '', separator, cb);
 }
@@ -90,7 +91,7 @@ function translate(lang, key, data) {
         }
     } else {
         ret = key;
-        logger.error(`not defined block [${key}] in ${lang} lang`,);
+        logger.error(`not defined block [${key}] in ${lang} lang`);
     }
     return ret;
 }
@@ -100,6 +101,9 @@ function translate(lang, key, data) {
         translate[key] = methods[key];
     }
 })({
+    addPlural: function (plu) {
+        plurals.addPlural(plu);
+    },
     addBlock: function (block) {
         parseBlock(block.data, block.langs);
     },

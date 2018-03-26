@@ -1,5 +1,4 @@
 export default {
-    name: 'example',
     langs: ['en', 'ru'],
     data: {
         exTheme: { // default

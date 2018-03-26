@@ -1,26 +1,32 @@
-import log from '../logger';
 import numberFormat from './number-format';
 
 import pluEn from './plurals/en';
 import pluRu from './plurals/ru';
 import pluEs from './plurals/es';
+import pluFr from './plurals/fr';
 
-const logger = log('plurals.js');
+const canUseConsole = (typeof console == 'object');
 
-const map = {};
+const pluralMap = {};
 
-((plurals) => {
-    plurals.forEach((plu) => {
-        if (map[plu.lang]) {
-            logger.error(`trying register already defined plural - ${plu.lang}`);
-        } else {
-            map[plu.lang] = plu;
-        }
-    });
-})([pluEn, pluRu, pluEs]);
+function logError() {
+    if (canUseConsole) {
+        const list = Array.prototype.slice.apply(arguments);
+        list.splice(0, 0, '#translate.plurals:');
+        console.error.apply(console, list);
+    }
+}
+
+function addPlural(plu) {
+    if (pluralMap[plu.lang]) {
+        logError(`trying register already defined plural - ${plu.lang}`);
+    } else {
+        pluralMap[plu.lang] = plu;
+    }
+}
 
 function plural(lang, fields, data) {
-    const plu = map[lang];
+    const plu = pluralMap[lang];
     let ret = fields.key || '';
     let asMap = false;
     if (typeof data === 'object') {
@@ -53,5 +59,19 @@ function plural(lang, fields, data) {
 
     return ret;
 }
+
+plural.addPlural = function (plu) {
+    if (Array.isArray(plu)) {
+        plu.forEach(function (item) {
+            addPlural(item);
+        })
+    } else {
+        addPlural(plu);
+    }
+};
+
+
+// default plurals
+plural.addPlural([pluEn, pluRu, pluEs, pluFr]);
 
 export default plural;
